@@ -9,7 +9,7 @@ const User = require('./models/user');
 
 const app = express();
 
-
+//mongoose connection
 mongoose.connect('mongodb://localhost:27017/hotel', {useNewUrlParser: true, useUnifiedTopology: true});
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
@@ -25,8 +25,10 @@ app.use(session({
     store:store,
   }));
 
+//flash message ,iddleware  
 app.use(flash());
 
+//auth middleware
 app.use((req, res, next)=>{
       if(!req.session.user){
           next();
@@ -51,17 +53,17 @@ app.use((req, res, next)=>{
     next();
 });
 
-
+//routes
 const hotelRoutes = require('./routes/hotel');
 const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin');
 
-
+//middlewares
 app.use(hotelRoutes);
 app.use(adminRoutes);
 app.use(authRoutes);
 
-
+//error middleware
 app.use((req,res, next)=>{
     res.render('404');
 });
