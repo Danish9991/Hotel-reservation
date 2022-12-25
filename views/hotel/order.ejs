@@ -1,0 +1,55 @@
+<%- include("../partials/header") %>
+
+<section class="py-5 section-1">
+    <div class="container py-5 text-center">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2>This is Order page!</h2>
+                <main>
+                    <% if (orders.length <= 0) { %>
+                        <h1>Nothing there!</h1>
+                    <% } else { %>
+                         <main>
+                    <% if (orders.length > 0) { %>
+                        <ul class="cart__item-list">
+                            <% orders.forEach(order => { %>
+                                <li class="cart__item">
+                                    <h6>orderId: <%= order._id %></h6>
+                                    <% order.rooms.forEach(p => { %>
+                                        <p><%= p.room.category %> (<%= p.price %>)</p>
+                                    <% }); %>
+                                    <h1> <%=order.days%> days</h1>
+                                    <h3><%= order.ammount %></h3>
+                                    
+                                  
+                                </li>
+                            <% }) %>
+                        </ul>
+                      <%}%>
+                        <hr>
+                        <!-- <ul class="orders">
+                            <% orders.forEach(order => { %>
+                                <li class="orders__item">
+                                    <h1>Order - # <%= order._id %></h1>
+                                    <ul class="orders__products">
+                                        <% order.rooms.forEach(p => { %>
+                                            <li class="orders__products-item"><%= p.room.title %> (<%= p.price %>)</li>
+                                        <% }); %>
+                                    </ul>
+                                </li>
+                            <% }); %>
+                        </ul>
+                    <% } %>
+                </main> -->
+               
+            </div>
+
+            </div>
+           
+    </div>
+</section>
+
+
+
+
+<%- include("../partials/footer") %>

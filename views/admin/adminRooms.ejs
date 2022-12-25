@@ -1,0 +1,36 @@
+<%- include("../partials/header") %>
+
+<section class="py-5 section-2">
+    <div class="container py-5 text-center">
+                <h2>See the best rooms in our hotel!!!</h2>
+                <hr>
+                 <div class="container">
+                     <div class="row">
+                     <%  rooms.forEach(function(room){ %>
+                      <div class="col col-lg-4" style="margin-bottom: 20px;">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="/uploads/<%=room.image%>" alt="Card image cap">
+                            <div class="card-body">
+                              <h5 class="card-title"><%=room.category%></h5>
+                              <h5 class="card-title">$<%=room.price%>/day</h5>
+                              <p class="card-text"><%=room.description%></p>
+
+                              <a href="/showRoom/<%=room._id%>" class="btn btn-dark" style="margin-bottom: 12px;">More Info</a>
+                              <div style="display: block;">
+                              <a href="/room/<%=room._id%>/edit" class="btn btn-sm btn-warning">Edit</a>
+                              <a href="/room/delete/<%=room._id%>" class="btn btn-sm btn-danger">Delete</a>
+                            </div>
+                            </div>
+                          </div>
+                     </div>
+                     <%  }) %>  
+                     </div>
+                 </div>
+            </div>
+        
+    </div>
+</section>
+
+
+
+<%- include("../partials/footer") %>

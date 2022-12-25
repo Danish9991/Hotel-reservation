@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Hotel Reservation System</title>
+</head>
+<body>
+    <!-- Demo header-->
+<section class="py-5 header text-center">
+    <div class="container py-5 text-white">
+        <header class="py-5">
+            <h1 class="display-4">Hotel Reservation System</h1>
+            <p class="font-italic mb-1">Hospitality is simply an opportunity to show love and care</p>
+            <p class="font-italic">There is only one boss. The Guest.
+               
+            </p>
+        </header>
+    </div>
+</section>
+<!-- Sticky navbar-->
+<header class="header sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
+        <div class="container"><a class="navbar-brand" href="#">
+            <strong class="h6 mb-0 font-weight-bold text-uppercase">Hotel </strong></a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a></li>
+                    <% if(isAdmin){%>
+                    <li class="nav-item"><a class="nav-link" href="/addRoom">Admin add Rooms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/adminRooms">Admin Rooms</a></li>
+                    <%}%>
+                   <% if(isAuthenticated){ %>
+                    
+                    <li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/order">Orders</a></li>
+                  
+                    <form action="/logout" method="post">
+                        <li class="nav-item"><button type="submit" style="border: none; background-color: white;" class="nav-link" >Logout</button></li>
+                    </form>
+                    <%} else{%>
+                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                    
+                    <li class="nav-item"><a class="nav-link " href="/register">sing up</a></li>
+                    <%}%>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container" style="margin: auto; margin-top: 20px; width: 50%; text-align: center;">
+    <% if(msg && msg.length>0){ %>
+     <div class="alert alert-success" role="alert">
+       <%= msg %>
+    </div>
+    <% } %>
+        
+     <% if(error && error.length>0){ %>
+       <div class="alert alert-danger" role="alert">
+         <%= error %>
+      </div>
+     <% } %>
+    
+      
+    </div>
+
